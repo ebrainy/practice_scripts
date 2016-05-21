@@ -62,7 +62,11 @@ can_ride_3 = group_3.select { |height| height >= 4 }
 
 #Man, we had to rewrite that block a bunch of times! Remove the blocks and replace them with a proc called over_4_feet so that the code in the block only needs to be written once.
 
-over_4_feet = Proc.new { |height| height >= 4 }
+over_4_feet = Proc.new { |height| height >= 4 } # ---> produces error. Correction on lines 67-68
+
+over_4_feet = Proc.new do |height| height >= 4 
+end
+
 
 can_ride_1 = group_1.select(&over_4_feet)
 can_ride_2 = group_2.select(&over_4_feet)
